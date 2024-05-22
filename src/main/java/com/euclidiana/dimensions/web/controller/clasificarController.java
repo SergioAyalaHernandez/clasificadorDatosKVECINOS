@@ -3,12 +3,10 @@ package com.euclidiana.dimensions.web.controller;
 import com.euclidiana.dimensions.persistence.entity.DTO.ValorreferenciaAClasificarDto;
 import com.euclidiana.dimensions.service.ClasificarService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/clasificador")
 public class clasificarController {
 
