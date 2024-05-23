@@ -1,7 +1,17 @@
-FROM openjdk:latest
+FROM maven:3.8.4-openjdk-17 AS build
 
 WORKDIR /app
 
-COPY target/your-app.jar /app/your-app.jar
+COPY pom.xml .
+COPY src ./src
 
-CMD ["java", "-jar", "your-app.jar"]
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/target/dimensions-0.0.1-SNAPSHOT.jar /app/dimensions.jar
+
+CMD ["java", "-jar", "dimensions.jar"]
+
